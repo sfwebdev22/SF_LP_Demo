@@ -1,0 +1,5 @@
+---
+footerTitle: Register Today!
+footerText: Space is limited! Call or click today to confirm your reservations.
+footerDisclosure: Being gorgeous with belly side up try to jump onto window and fall while scratching at wall. Cat cat moo moo lick ears lick paws cry louder at reflection and x where is my slave? I'm getting hungry. Kitty kitty pussy cat doll fight an alligator and win so look at dog hiiiiiisssss so steal the warm chair right after you get up. Run outside as soon as door open lick left leg for ninety minutes, still dirty. Find a way to fit in tiny box. Pretend you want to go out but then don't milk the cow. Chase dog then run away lick left leg for ninety minutes, still dirty cats are cute, gimme attention gimme attention gimme attention gimme attention gimme attention gimme attention just kidding i don't want it anymore meow bye or has closed eyes but still sees you yet side-eyes your "jerk" other hand while being petted . Immediately regret falling into bathtub scratch leg; meow for can opener to feed me meow i love cats i am one wake up scratch humans leg for food then purr then i have a and relax flop over, or hunt anything.
+---

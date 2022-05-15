@@ -1,0 +1,142 @@
+backend:
+    name: git-gateway
+    branch: master
+media_folder: 'public/assets/images'
+public_folder: './assets/images'
+collections:
+    - name: 'header'
+      label: 'Header'
+      folder: 'src/header'
+      create: false
+      delete: false
+      editor:
+          preview: false
+      slug: '{{slug}}'
+      fields:
+          - { label: 'Website Name', name: 'websiteName', widget: 'string' }
+          - { label: 'Phone Number', name: 'phone', widget: 'string' }
+          - { label: 'Header Title', name: 'headerTitle', widget: 'string' }
+          - { label: 'Header Subtitle', name: 'headerSubtitle', widget: 'string' }
+    - name: 'event'
+      label: 'Events'
+      folder: 'src/events'
+      create: true
+      editor:
+          preview: false
+      slug: '{{slug}}'
+      fields:
+          - { label: 'Project Code', name: 'title', widget: 'string' }
+          - {
+                label: 'Status',
+                name: 'eventStatus',
+                widget: 'select',
+                options: ['Open', 'Full', 'Closed', 'Cancelled'],
+                default: ['Open']
+            }
+          - { label: 'Venue', name: 'eventVenue', widget: 'string' }
+          - { label: 'Address', name: 'eventAddress', widget: 'string' }
+          - {
+                label: 'Event Day',
+                name: 'eventDay',
+                widget: 'select',
+                options:
+                    ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+            }
+          - {
+                label: 'Event Month',
+                name: 'eventMonth',
+                widget: 'select',
+                options:
+                    [
+                        'January',
+                        'February',
+                        'March',
+                        'April',
+                        'May',
+                        'June',
+                        'July',
+                        'August',
+                        'September',
+                        'October',
+                        'November',
+                        'December'
+                    ]
+            }
+          - {
+                label: 'Event Date',
+                name: 'eventDateOfMonth',
+                widget: 'select',
+                options:
+                    [
+                        '01',
+                        '02',
+                        '03',
+                        '04',
+                        '05',
+                        '06',
+                        '07',
+                        '08',
+                        '09',
+                        '10',
+                        '11',
+                        '12',
+                        '13',
+                        '14',
+                        '15',
+                        '16',
+                        '17',
+                        '18',
+                        '19',
+                        '20',
+                        '21',
+                        '22',
+                        '23',
+                        '24',
+                        '25',
+                        '26',
+                        '27',
+                        '28',
+                        '29',
+                        '30',
+                        '31'
+                    ]
+            }
+          - { label: 'Event Time', name: 'eventTime', widget: 'string' }
+          - { label: 'Registration Link', name: 'eventRegisterLink', widget: 'string' }
+          - { label: 'Directions Link', name: 'eventDirectionsLink', widget: 'string' }
+          - { label: 'Alert Message', name: 'eventAlertText', widget: 'string', required: false }
+          - { label: 'Show Alert', name: 'eventAlert', widget: 'boolean', default: false }
+    - name: 'maincontent'
+      label: 'Main Content'
+      folder: 'src/maincontent'
+      create: false
+      delete: false
+      editor:
+          preview: false
+      slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+      fields:
+          - { label: 'Main Content Title', name: 'mainContentTitle', widget: 'string' }
+          - { label: 'Main Content Text', name: 'mainContentText', widget: 'markdown' }
+          - { label: 'Bullet Title', name: 'bulletTitle', widget: 'string' }
+          - { label: 'Bullet Disclosure', name: 'bulletDisclosure', widget: 'text' }
+    - name: 'bullets'
+      label: 'Bullets'
+      folder: 'src/bullets'
+      create: true
+      editor:
+          preview: false
+      slug: '{{slug}}'
+      fields:
+          - { label: 'Bullet Text', name: 'title', widget: 'text' }
+    - name: 'footer'
+      label: 'Footer'
+      folder: 'src/footer'
+      create: false
+      delete: false
+      editor:
+          preview: false
+      slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+      fields:
+          - { label: 'Footer Title', name: 'footerTitle', widget: 'string' }
+          - { label: 'Footer Text', name: 'footerText', widget: 'string' }
+          - { label: 'Footer Disclosure', name: 'footerDisclosure', widget: 'text' }

@@ -1,0 +1,35 @@
+{%- for footer in collections.footer -%}
+<footer id="footer">
+    <div class="container-fluid footer-container">
+        <div class="container">
+            <div class="footer-body">
+                <h5 class="footer-body-title serif">{{ footer.data.footerTitle }}</h5>
+                <hr class="divider divider-sm" />
+                <p class="footer-body-message">
+                    {{ footer.data.footerText }}
+                </p>
+                <div class="footer-button-grid">
+                    {%- for header in collections.header -%}
+                        <a href="tel:{{ header.data.phone }}" class="btn btn-outline btn-lg">
+                            <i class="las la-phone"></i>
+                            {{ header.data.phone }}
+                        </a>
+                    {%- endfor -%}
+                    <a href="#" class="btn btn-solid btn-lg">
+                        <i class="las la-check"></i>Register Online
+                    </a>
+                </div>
+                <hr class="divider divider-sm" />
+                <p class="footer-disclosure">
+                    {{ footer.data.footerDisclosure }}
+                    <br />
+                    <br />
+                    <a href="http://www.seminarfoundry.com" target="_blank"
+                        >Website Powered by Seminar Foundry</a
+                    >
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+{%- endfor -%}

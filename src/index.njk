@@ -1,0 +1,100 @@
+---
+layout: 'base.njk'
+---
+
+<!-- EVENT CARDS -->
+<div class="container events pullup">
+
+    {%- for event in collections.event | reverse -%}
+        <div class="event-card">
+            <div class="date-box">
+                <div class="date-box-day">{{ event.data.eventDay }}</div>
+                <div class="date-box-date">
+                    {{ event.data.eventMonth | shortMonth }} {{event.data.eventDateOfMonth}}
+                </div>
+                <div class="date-box-time">{{ event.data.eventTime }}</div>
+            </div>
+            <div class="event-card-content">
+                <div class="venue">
+                    <div class="venue-name">{{ event.data.eventVenue }}</div>
+                    <div class="venue-address">{{event.data.eventAddress}}</div>
+                </div>
+                <div class="button-grid">
+                    <a href="{{ event.data.eventDirectionsLink }}" class="btn btn-outline" target="_blank">
+                        <i class="las la-map-marker-alt"></i>Directions
+                    </a>
+                    {%- if event.data.eventStatus === 'Open' -%}
+                        <a href="{{ event.data.eventRegisterLink }}" class="btn btn-solid" target="_blank">
+                            <i class="las la-check"></i>Register Now
+                        </a>
+                    {%- elseif event.data.eventStatus === 'Full' -%}
+                        <a href="{{ event.data.eventRegisterLink }}" class="btn btn-solid disabled" target="_blank">
+                            <i class="las la-times"></i>Seating Full
+                        </a>
+                    {%- elseif event.data.eventStatus === 'Closed' -%}
+                        <a href="{{ event.data.eventRegisterLink }}" class="btn btn-solid closed" target="_blank">
+                            <i class="las la-times"></i>Closed
+                        </a>
+                    {%- elseif event.data.eventStatus === 'Cancelled' -%}
+                        <a href="{{ event.data.eventRegisterLink }}" class="btn btn-solid cancelled" target="_blank">
+                            <i class="las la-exclamation-triangle"></i>Cancelled
+                        </a>
+                    {%- endif -%}
+                </div>
+            </div>
+            {%- if event.data.eventAlert -%}
+                <div class="event-card-alert">
+                    <p>
+                        {{ event.data.eventAlertText }}
+                    </p>
+                </div>
+            {%- endif -%}
+        </div>
+    {%- endfor -%}
+
+</div>
+<!-- /EVENT-CARDS -->
+
+<!-- MAIN-CONTENT -->
+<div class="main-content">
+    <div class="container-fluid bullet-bg">
+    <div class="container">
+        {%- for content in collections.maincontent -%}
+            <div class="intro-content">
+                <h3>{{ content.data.mainContentTitle }}</h3>
+                <p>{{ content.data.mainContentText | safe }}</p>
+            </div>
+            <hr class="divider divider-lg" />
+        </div>
+    
+            <div class="container">
+                <div class="bullet-content">
+                    <h4>{{ content.data.bulletTitle }}:</h4>
+        
+
+                <ul class="bullet-list">
+                    {%- for bullet in collections.bullets -%}
+                        <li class="bullet-list-item">
+                            <span><i class="las la-check-square"></i></span>
+                            <p>
+                                {{ bullet.data.title }}
+                            </p>
+                        </li>
+                    {%- endfor -%}
+
+                </ul>
+                <p class="bullet-disclosure">
+                    *{{ content.data.bulletDisclosure }}
+                </p>
+                {%- endfor -%}
+                <a href="#footer" class="btn btn-solid btn-block">
+                    <i class="las la-check"></i>Register Now
+                </a>
+            </div>
+  
+    </div>
+    </div>
+</div>
+
+
+

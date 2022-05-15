@@ -1,0 +1,685 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+@font-face {
+    font-family: 'Blacksword';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Blacksword'),
+        url('https://fonts.cdnfonts.com/s/15024/Blacksword.woff') format('woff');
+}
+
+:root {
+    --color-primary: rgba(134, 118, 79, 1);
+    --color-black: rgba(51, 51, 50, 1);
+    --color-closed: rgba(102, 102, 102, 1);
+    --color-white: rgba(255, 255, 255, 1);
+    --color-card-border: rgba(225, 225, 225, 1);
+    --color-card-fill: #f7f7f7;
+    --color-alert-border: #c60606;
+    --color-alert-fill: #ffe9e9;
+    --color-disclosure: #666666;
+
+    --font-primary: 'Inter', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+    --font-script: 'Blacksword', cursive;
+    --fw-400: 400;
+    --fw-500: 500;
+    --fw-600: 600;
+    --fw-700: 700;
+
+    --container-width: 60rem;
+    --event-card-spacing: 1.5rem;
+
+    --shadow-button: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    --shadow-card: 0px 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-text: 2px 2px #181818;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+}
+
+/* Set core root defaults */
+html,
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    font-size: 16px;
+    font-family: var(--font-primary);
+    color: var(--color-black);
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ------------------------------ */
+/* UTILITIES */
+/* ------------------------------ */
+.container {
+    width: min(100% - 3rem, var(--container-width));
+    margin-inline: auto;
+}
+
+.container-fluid {
+    min-width: 100%;
+}
+
+.container-fluid.nav {
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-card);
+}
+
+.nav-container {
+    width: min(100% - 2rem, var(--container-width));
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.pullup {
+    transform: translateY(-3.75rem);
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    background-color: var(--color-card-border);
+}
+
+.divider-lg {
+    margin: 3.75rem 0;
+}
+
+.divider-sm {
+    margin: 1.5rem 0;
+}
+
+/* ------------------------------ */
+/* BUTTONS */
+/* ------------------------------ */
+.btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.8125rem;
+    font-weight: var(--fw-500);
+    padding: 0.625rem;
+    transition: all 0.15s ease-in-out;
+    font-family: var(--font-primary);
+}
+
+.btn-lg {
+    font-size: 1.125rem;
+    font-weight: var(--fw-400);
+    padding: 1rem;
+}
+
+.btn-block {
+    display: block;
+    width: max-content;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-button);
+}
+
+.btn:focus {
+    outline: 1px solid var(--color-black);
+}
+
+.btn i {
+    margin-right: 0.25rem;
+}
+
+.btn-solid {
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-outline {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-black);
+    color: var(--color-black);
+}
+
+.btn.disabled,
+.btn.closed,
+.btn.cancelled {
+    pointer-events: none;
+}
+
+.btn.disabled {
+    background-color: var(--color-card-border);
+    color: var(--color-black);
+    border: 1px solid var(--color-black);
+}
+
+.btn.closed {
+    background-color: var(--color-closed);
+    color: var(--color-white);
+    border: 1px solid var(--color-closed);
+}
+
+.btn.cancelled {
+    background-color: var(--color-alert-fill);
+    color: var(--color-alert-border);
+    border: 1px solid var(--color-alert-border);
+}
+
+/* ------------------------------ */
+/* NAVIGATION */
+/* ------------------------------ */
+.navbar-title {
+    width: 100%;
+    text-align: center;
+    color: var(--color-black);
+    font-family: var(--font-primary);
+    font-weight: var(--fw-700);
+    font-size: 0.875rem;
+}
+
+@media (min-width: 305px) {
+    .navbar-title {
+        width: max-content;
+    }
+}
+
+.nav-btn {
+    display: none;
+}
+
+@media (min-width: 400px) {
+    .nav-btn {
+        display: block;
+        background-color: var(--color-white);
+        border: 1px solid var(--color-black);
+        color: var(--color-black);
+        width: max-content;
+    }
+}
+
+.nav-btn-mobile {
+    display: none;
+}
+
+@media (min-width: 305px) {
+    .nav-btn-mobile {
+        display: block;
+        color: var(--color-black);
+        background-color: var(--color-white);
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        border: 1px solid var(--color-black);
+    }
+    .nav-btn-mobile i {
+        transform: translateX(12.5%);
+    }
+}
+
+@media (min-width: 400px) {
+    .nav-btn-mobile {
+        display: none;
+    }
+}
+
+/* ------------------------------ */
+/* HEADER */
+/* ------------------------------ */
+.header {
+    background: url('../assets/images/header_bg.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: var(--color-black);
+    padding: 14rem 0;
+    border-bottom: 0.5rem solid var(--color-primary);
+}
+
+.header-content {
+    color: var(--color-white);
+    text-align: center;
+    text-shadow: var(--shadow-text);
+    transform: translateY(-1.625rem);
+}
+
+.header-content-title.title-script,
+.header-content-title.title-serif {
+    font-size: clamp(2.625rem, 7vw + 1rem, 4.5rem);
+    line-height: 1.1;
+}
+
+.header-content-title.title-script {
+    font-family: var(--font-script);
+    font-weight: var(--fw-400);
+    text-transform: capitalize;
+}
+
+.header-content-title.title-serif {
+    font-family: var(--font-serif);
+    font-weight: var(--fw-600);
+    text-transform: uppercase;
+}
+
+.header-content-subtitle {
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    font-weight: var(--fw-400);
+    font-family: var(--font-serif);
+    line-height: 1.1;
+    margin-top: 1rem;
+}
+
+@media (min-width: 396px) {
+    .header-content-subtitle {
+        font-size: 1.5rem;
+    }
+}
+
+/* ------------------------------ */
+/* EVENT CARD */
+/* ------------------------------ */
+.event-card {
+    width: 100%;
+    padding: 0.625rem;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-card-border);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+}
+
+.event-card:not(:last-child) {
+    margin-bottom: var(--event-card-spacing);
+}
+
+.event-card-content {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--color-card-fill);
+    border: 1px solid var(--color-card-border);
+    text-align: center;
+    grid-column: 2/13;
+}
+
+@media (min-width: 805px) {
+    .event-card-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.event-card-alert {
+    background-color: var(--color-alert-fill);
+    margin-top: 0.625rem;
+    padding: 0.625rem;
+    font-size: 0.75rem;
+    font-weight: var(--fw-500);
+    text-align: center;
+    border: 1px solid var(--color-alert-border);
+    color: var(--color-alert-border);
+    line-height: 1.4;
+    grid-column: 1/-1;
+}
+
+.date-box {
+    background-color: var(--color-black);
+    padding: 1rem;
+    margin-bottom: 0.625rem;
+    min-width: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.date-box-day,
+.date-box-date,
+.date-box-time {
+    color: var(--color-white);
+    text-transform: uppercase;
+}
+
+.date-box-day {
+    font-size: 0.825rem;
+    font-weight: var(--fw-500);
+    margin-top: 0.25rem;
+}
+
+.date-box-date {
+    font-size: 1.5rem;
+    font-weight: var(--fw-600);
+}
+
+.date-box-time {
+    font-size: 1.25rem;
+    font-weight: var(--fw-600);
+}
+
+.venue {
+    width: 100%;
+}
+
+.venue-name {
+    font-size: 1.125rem;
+    font-weight: var(--fw-600);
+    margin-bottom: 0.5rem;
+}
+
+.venue-address {
+    font-size: 0.75rem;
+    font-weight: var(--fw-500);
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 805px) {
+    .venue {
+        margin-right: 0.625rem;
+    }
+    .venue-name {
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+    }
+    .venue-address {
+        margin-bottom: 0;
+    }
+}
+
+.button-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+}
+
+@media (min-width: 960px) {
+    .button-grid {
+        width: 75%;
+    }
+}
+
+@media (min-width: 513px) {
+    .event-card {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 0.625rem;
+    }
+
+    .event-card-content {
+        text-align: left;
+        padding: 0.625rem;
+    }
+
+    .event-card-alert {
+        margin-top: 0;
+    }
+
+    .date-box {
+        padding: 0.625rem;
+        margin: 0;
+        grid-column: 1/2;
+        max-width: 100px;
+    }
+
+    .venue-name {
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .venue-address {
+        margin-right: 1.25rem;
+    }
+
+    .button-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ------------------------------ */
+/* MAIN / INTRO CONTENT */
+/* ------------------------------ */
+.main-content {
+    margin-top: 3.75rem;
+}
+
+.intro-content {
+    text-align: center;
+}
+
+.intro-content h3 {
+    font-family: var(--font-serif);
+    font-weight: var(--fw-500);
+    font-size: clamp(1rem, 5vw + 1rem, 3rem);
+    line-height: 1.125;
+    text-transform: uppercase;
+    color: var(--color-primary);
+}
+
+.intro-content p {
+    font-size: 1.125rem;
+    margin-top: var(--event-card-spacing);
+    margin-inline: auto;
+    line-height: 1.6;
+}
+
+@media (min-width: 769px) {
+    .intro-content p {
+        width: calc(100% - 4rem);
+    }
+}
+
+/* ------------------------------ */
+/* BULLETS */
+/* ------------------------------ */
+.bullet-bg {
+    background-color: var(--color-white);
+}
+
+.bullet-content {
+    padding-bottom: 7.5rem;
+}
+
+@media (min-width: 768px) {
+    .bullet-bg {
+        background: url('../assets/images/bullets_bg.jpg') no-repeat;
+        background-position: right bottom;
+        background-size: 45%;
+    }
+
+    .bullet-content {
+        width: 60%;
+    }
+}
+
+@media (min-width: 1640px) {
+    .bullet-bg {
+        background-size: 40%;
+    }
+}
+
+.bullet-content h4 {
+    font-family: var(--font-serif);
+    font-weight: var(--fw-500);
+    font-size: clamp(1rem, 5vw + 1rem, 1.75rem);
+    line-height: 1.125;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.bullet-content > .btn {
+    margin-top: 2rem;
+}
+
+.bulle-list {
+    list-style: none;
+}
+
+.bullet-list-item,
+.bullet-disclosure {
+    margin-bottom: 1rem;
+}
+
+.bullet-list-item {
+    display: flex;
+    font-size: 1.125rem;
+    line-height: 1.4;
+}
+
+.bullet-list-item i {
+    margin-right: 0.5rem;
+    color: var(--color-primary);
+}
+
+.bullet-disclosure {
+    font-size: 0.875rem;
+    color: var(--color-disclosure);
+}
+
+/* ------------------------------ */
+/* FOOTER */
+/* ------------------------------ */
+.footer-container {
+    background-color: var(--color-black);
+    border-top: 0.5rem solid var(--color-primary);
+    padding: 3.75rem 0;
+}
+
+.footer-body {
+    background-color: var(--color-white);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+}
+
+.footer-body-title.serif {
+    font-family: var(--font-serif);
+    font-weight: var(--fw-500);
+    font-size: clamp(2.625rem, 7vw + 1rem, 3.5rem);
+    line-height: 1.125;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.footer-body-title.script {
+    font-family: var(--font-script);
+    font-weight: var(--fw-400);
+    font-size: clamp(2.625rem, 7vw + 1rem, 3.5rem);
+    text-transform: capitalize;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.footer-body-message {
+    font-size: 1.3125rem;
+}
+
+.footer-button-grid {
+    margin-top: var(--event-card-spacing);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+@media (min-width: 597px) {
+    .footer-button-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.footer-disclosure {
+    font-size: 0.75rem;
+    color: var(--color-disclosure);
+}
+
+.footer-disclosure a {
+    font-size: 0.5rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #999;
+}

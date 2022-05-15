@@ -1,0 +1,28 @@
+<header>
+    {%- for header in collections.header -%}
+    <!-- NAVBAR -->
+    <div class="container-fluid nav">
+        <nav class="nav-container">
+            <p class="navbar-title">{{ header.data.websiteName }}</p>
+            <a href="tel:{{ header.data.phone }}" class="btn nav-btn-mobile"
+                ><i class="las la-phone"></i>
+                <a href="tel:{{ header.data.phone }}" class="btn nav-btn"
+                    ><i class="las la-phone"></i>{{ header.data.phone }}</a
+                >
+            </a>
+        </nav>
+    </div>
+    <!-- /NAVBAR -->
+
+    <!-- HEADER -->
+    <div class="container-fluid header">
+        <div class="container header-content">
+            <h1 class="header-content-title title-script">{{ header.data.headerTitle }}</h1>
+            <h2 class="header-content-subtitle">
+                {{ header.data.headerSubtitle }}
+            </h2>
+        </div>
+    </div>
+    <!-- /HEADER -->
+    {%- endfor -%}
+</header>
