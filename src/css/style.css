@@ -82,6 +82,7 @@ body {
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
+    -webkit-text-decoration-skip: ink;
     text-decoration-skip-ink: auto;
 }
 
@@ -109,7 +110,9 @@ select {
     *,
     *::before,
     *::after {
+        -webkit-animation-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
+        -webkit-animation-iteration-count: 1 !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
@@ -190,6 +193,8 @@ select {
 
 .btn-block {
     display: block;
+    width: -webkit-max-content;
+    width: -moz-max-content;
     width: max-content;
 }
 
@@ -256,6 +261,8 @@ select {
 
 @media (min-width: 305px) {
     .navbar-title {
+        width: -webkit-max-content;
+        width: -moz-max-content;
         width: max-content;
     }
 }
@@ -270,6 +277,8 @@ select {
         background-color: var(--color-white);
         border: 1px solid var(--color-black);
         color: var(--color-black);
+        width: -webkit-max-content;
+        width: -moz-max-content;
         width: max-content;
     }
 }
@@ -308,9 +317,6 @@ select {
 /* ------------------------------ */
 .header {
     background: url('../assets/images/header_bg.jpg') no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
     background-color: var(--color-black);
     padding: 14rem 0;
