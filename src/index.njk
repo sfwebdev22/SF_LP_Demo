@@ -73,7 +73,7 @@ layout: 'base.njk'
         
 
                 <ul class="bullet-list">
-                    {%- for bullet in collections.bullets -%}
+                    {%- for bullet in collections.bullets | sortByOrder -%}
                         <li class="bullet-list-item">
                             <span><i class="las la-check-square"></i></span>
                             <p>
