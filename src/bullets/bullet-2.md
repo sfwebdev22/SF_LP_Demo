@@ -1,4 +1,4 @@
 ---
 title: Bullet 2
-order: 1
+order: 2
 ---
