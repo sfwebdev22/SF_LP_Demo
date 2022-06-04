@@ -1,6 +1,6 @@
 backend:
     name: git-gateway
-    branch: main
+    branch: master
 media_folder: 'public/assets/images'
 public_folder: './assets/images'
 collections:
@@ -26,6 +26,13 @@ collections:
       slug: '{{slug}}'
       fields:
           - { label: 'Project Code', name: 'title', widget: 'string' }
+          - {
+                label: 'Listing Date',
+                name: 'date',
+                widget: 'date',
+                default: '',
+                format: 'YYYY-MM-DD'
+            }
           - {
                 label: 'Status',
                 name: 'eventStatus',
@@ -128,6 +135,16 @@ collections:
       slug: '{{slug}}'
       fields:
           - { label: 'Bullet Text', name: 'title', widget: 'text' }
+          - {
+                label: 'Bullet Order',
+                name: 'order',
+                widget: 'number',
+                default: 1,
+                value_type: 'int',
+                min: 1,
+                max: 21,
+                step: 1
+            }
     - name: 'footer'
       label: 'Footer'
       folder: 'src/footer'
